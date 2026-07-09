@@ -36,7 +36,7 @@ async def check_url(data: URLRequest):
             "malicious": stats["malicious"],
             "suspicious": stats["suspicious"],
             "harmless": stats["harmless"],
-            "safe": stats["malicious"] == 0 and stats["suspicious"] == 0
+            "safe": stats["malicious"] < 3
         }
     else:
         return {"error": "URL not found in VirusTotal. Try submitting it first."}
