@@ -4,6 +4,8 @@ import Register from "./components/Register"
 import BreachChecker from "./components/BreachChecker"
 import UrlScanner from "./components/UrlScanner"
 import Chatbot from "./components/Chatbot"
+import History from "./components/History"
+import SecurityScore from "./components/SecurityScore"
 
 function Dashboard() {
   const username = localStorage.getItem("username")
@@ -28,6 +30,8 @@ function Dashboard() {
       <BreachChecker />
       <UrlScanner />
       <Chatbot />
+      <History />
+      <SecurityScore />
     </div>
   )
 }

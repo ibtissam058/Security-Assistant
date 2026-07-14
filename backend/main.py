@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import breach, scanner, chatbot, auth
+from routers import breach, scanner, chatbot, auth, history, score
 from database import engine
 import models
 
@@ -20,6 +20,8 @@ app.include_router(auth.router)
 app.include_router(breach.router)
 app.include_router(scanner.router)
 app.include_router(chatbot.router)
+app.include_router(history.router)
+app.include_router(score.router)
 
 @app.get("/health")
 def health():

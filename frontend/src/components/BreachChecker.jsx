@@ -7,7 +7,12 @@ function BreachChecker() {
 
   const checkBreach = async () => {
     setLoading(true)
-    const res = await fetch(`http://localhost:8000/check-breach/${email}`)
+    const token = localStorage.getItem("token")
+    const res = await fetch(`http://localhost:8000/check-breach/${email}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
     const data = await res.json()
     setResult(data)
     setLoading(false)

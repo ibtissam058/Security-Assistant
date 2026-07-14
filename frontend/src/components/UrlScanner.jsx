@@ -7,9 +7,13 @@ function UrlScanner() {
 
   const checkUrl = async () => {
     setLoading(true)
+    const token = localStorage.getItem("token")
     const res = await fetch("http://localhost:8000/check-url", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
       body: JSON.stringify({ url })
     })
     const data = await res.json()
