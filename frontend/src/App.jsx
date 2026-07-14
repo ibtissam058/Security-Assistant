@@ -6,6 +6,7 @@ import UrlScanner from "./components/UrlScanner"
 import Chatbot from "./components/Chatbot"
 import History from "./components/History"
 import SecurityScore from "./components/SecurityScore"
+import EmailAnalyzer from "./components/EmailAnalyzer"
 
 function Dashboard() {
   const username = localStorage.getItem("username")
@@ -32,6 +33,7 @@ function Dashboard() {
       <Chatbot />
       <History />
       <SecurityScore />
+      <EmailAnalyzer />
     </div>
   )
 }

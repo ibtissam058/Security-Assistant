@@ -17,6 +17,17 @@ function History() {
     fetchHistory()
   }, [])
 
+  const clearHistory = async () => {
+    if (!window.confirm("Are you sure you want to clear all scan history?")) return
+    const token = localStorage.getItem("token")
+    await fetch("http://localhost:8000/history", {
+      method: "DELETE",
+      headers: { "Authorization": `Bearer ${token}` }
+    })
+    setScans([])
+  }
+
+
   return (
     <div style={{ marginBottom: "40px" }}>
       <h2>📋 Scan History</h2>
@@ -57,6 +68,25 @@ function History() {
           </tbody>
         </table>
       )}
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
+  {scans.length > 0 && (
+    <button
+      onClick={clearHistory}
+      style={{
+        padding: "6px 14px",
+        background: "transparent",
+        border: "1px solid #ff6b6b",
+        color: "#ff6b6b",
+        borderRadius: "6px",
+        cursor: "pointer",
+        fontSize: "13px"
+      }}
+    >
+      🗑️ Clear History
+    </button>
+  )}
+</div>
     </div>
   )
 }

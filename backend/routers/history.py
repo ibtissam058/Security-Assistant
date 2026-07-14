@@ -28,3 +28,14 @@ def get_history(
         }
         for s in scans
     ]
+
+@router.delete("/history")
+def clear_history(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    db.query(ScanHistory)\
+        .filter(ScanHistory.user_id == current_user.id)\
+        .delete()
+    db.commit()
+    return {"message": "History cleared successfully"}
